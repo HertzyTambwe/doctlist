@@ -6,6 +6,24 @@
     <title>Document</title>
 </head>
 <body>
+
+    
+
+
     <h1>Taches</h1>
+
+
+    {% for collection in collections %}
+        <h2>{{ collection.name|safe }}</h2>
+
+    {% endfor %}
+
+    <form method="post" action="{% url 'add-collection' %}">
+        {% csrf_token %}
+        
+        <input type="text" name="collection-name">
+        <button type="submit">Ajouter</button>
+    </form>
+
 </body>
 </html>
