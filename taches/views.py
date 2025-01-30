@@ -10,7 +10,9 @@ def index(request):
     """index page"""
     context = {}
 
-    context["collections"] = Collection.objects.order_by("name")
+    collection = Collection.get_default_collection()
+
+    context["collections"] = Collection.objects.order_by("slug")
 
     return render(request, 'taches/index.html', context=context)
 
@@ -21,6 +23,11 @@ def add_collection(request):
     collection, created = Collection.objects.get_or_create(name=collection_name)
 
     if not created:
-        return HttpResponse("La collection existe deja.")
+        return HttpResponse("La collection existe deja.", status=409)
     
-    return redirect('home') 
+    return HttpResponse(f'<h2>{collection_name}</h2>')
+
+def add_tache(request):
+
+    collection = Collection.get_default_collection()
+    return HttpResponse("")
