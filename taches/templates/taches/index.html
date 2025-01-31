@@ -34,14 +34,18 @@
 
     <form method="post">
         {% csrf_token %}
-        <input type="text" name="tache-name">
+        <input type="text" name="tache-description">
         <button type="submit" hx-post="{% url 'add-tache' %}" hx-target="#taches" hx-swap="beforeend">
             Ajouter
         </button>
     </form>
 
     <div id="taches">
-        
+        {% for tache in taches  %}
+
+            <p>{{ tache.description }}</p>
+
+        {% endfor %}
     </div>
 
     <script>
