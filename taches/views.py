@@ -2,6 +2,7 @@ from html import escape
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.utils.text import slugify
+from django.template.loader import render_to_string
 
 from taches.models import Collection, Tache
 
@@ -17,7 +18,7 @@ def index(request):
         collection = get_object_or_404(Collection, slug=collection_slug)
 
 
-    context["collections"] = Collection.objects.order_by("-slug")
+    context["collections"] = Collection.objects.order_by("slug")
     context["taches"] = collection.tache_set.order_by("description")
     
     return render(request, 'taches/index.html', context=context)
@@ -42,5 +43,7 @@ def add_tache(request):
 
 
 def get_taches(request, collection_pk):
+
     collection = get_object_or_404(Collection, pk=collection_pk)
-    return collection.tache_set.order_by("description")
+    taches = collection.tache_set.order_by("description")
+    return render(request, "taches/taches.html", context={"taches": taches})

@@ -19,7 +19,8 @@
 
     <div id="collections">
         {% for collection in collections %}
-        <h2>{{ collection.name }}</h2>
+        <button hx-get="{% url 'get-taches' collection.pk %}"
+                hx-target="#taches">{{ collection.name }}</button>
 
         {% endfor %}
     </div>
@@ -41,11 +42,7 @@
     </form>
 
     <div id="taches">
-        {% for tache in taches  %}
-
-            <p>{{ tache.description }}</p>
-
-        {% endfor %}
+        {% include "taches/taches.html" with taches=taches %}
     </div>
 
     <script>
