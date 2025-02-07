@@ -36,7 +36,7 @@ def add_collection(request):
 
 def add_tache(request):
 
-    collection = Collection.get_default_collection()
+    collection = Collection.objects.get(slug=request.POST.get("collection"))
     description = escape(request.POST.get("tache-description"))
     Tache.objects.create(description=description, collection=collection)
     return HttpResponse(description)
