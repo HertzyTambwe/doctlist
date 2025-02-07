@@ -1,5 +1,5 @@
 {% for tache in taches %}
 
-    <p>{{ tache.description }}</p>
+    {% include "taches/tache.html" with tache=tache %}
 
 {% endfor %}

@@ -19,9 +19,7 @@
 
     <div id="collections">
         {% for collection in collections %}
-        <button hx-get="{% url 'get-taches' collection.pk %}"
-                hx-push-url="?collection={{ collection.slug }}"
-                hx-target="#taches">{{ collection.name }}</button>
+            {% include "taches/collection.html" with collection=collection %}
 
         {% endfor %}
     </div>

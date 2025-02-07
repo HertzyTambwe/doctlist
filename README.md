@@ -17,5 +17,5 @@ Poject Django qui est courament appeler ToDo list.
 [] Supprimer une collection  
 [x] Empecher l'ajout d'une collection en doublon  
 [x] Ajouter une tache (relier a une collection)  
-[] Supprimer une tache  
+[x] Supprimer une tache  
 [X] Afficher les taches d'une collection  

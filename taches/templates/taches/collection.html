@@ -1,0 +1,2 @@
+<button hx-get="{% url 'get-taches' collection.pk %}" hx-push-url="?collection={{ collection.slug }}"
+    hx-target="#taches">{{ collection.name }}</button>
