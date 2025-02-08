@@ -14,7 +14,7 @@ Poject Django qui est courament appeler ToDo list.
 ## Fonctionalites
 
 [x] Ajouter une collection  
-[] Supprimer une collection  
+[x] Supprimer une collection  
 [x] Empecher l'ajout d'une collection en doublon  
 [x] Ajouter une tache (relier a une collection)  
 [x] Supprimer une tache  

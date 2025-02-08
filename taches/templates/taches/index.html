@@ -44,8 +44,10 @@
         </button>
     </form>
 
+    
+
     <div id="taches">
-        {% include "taches/taches.html" with taches=taches %}
+        {% include "taches/taches.html" with taches=taches collection=collection %}
     </div>
 
     <script>

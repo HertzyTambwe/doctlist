@@ -1,5 +1,10 @@
 {% for tache in taches %}
 
-    {% include "taches/tache.html" with tache=tache %}
+{% include "taches/tache.html" with tache=tache %}
 
 {% endfor %}
+{% if collection.slug != "_default" %}
+
+<a href="{% url 'delete-collection' collection.pk %}">Supprimer la collection</a>
+
+{% endif %}
