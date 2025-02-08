@@ -9,27 +9,22 @@ from taches.models import Collection, Tache
 
 # Create your views here.
 
-from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse
-from .models import Collection
-
 def index(request):
-    """Index page"""
-    collection_slug = request.GET.get("collection", "_default")
+    """index page"""
+    context = {}
+    collection_slug = request.GET.get("collection")
 
-    if collection_slug == "_default":
+    if not collection_slug:
+        Collection.get_default_collection()
         return redirect(f"{reverse('home')}?collection=_default")
-
     collection = get_object_or_404(Collection, slug=collection_slug)
 
-    context = {
-        "collections": Collection.objects.order_by("slug"),
-        "collection": collection,
-        "taches": collection.tache_set.order_by("description"),
-    }
 
-    return render(request, "taches/index.html", context)
-
+    context["collections"] = Collection.objects.order_by("slug")
+    context["collection"] = collection
+    context["taches"] = collection.tache_set.order_by("description")
+    
+    return render(request, 'taches/index.html', context=context)
 
 
 def add_collection(request):

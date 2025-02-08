@@ -1,2 +1,5 @@
-<button hx-get="{% url 'get-taches' collection.pk %}" hx-push-url="?collection={{ collection.slug }}"
-    hx-target="#taches">{{ collection.name }}</button>
+<button class="list-group-item text-start {% if request.GET.collection == collection.slug %}active{% endif %}"
+data-bs-toggle="list" 
+hx-get="{% url 'get-taches' collection.pk %}" hx-push-url="?collection={{ collection.slug }}"
+    hx-target="#taches-container">{{ collection.name }}
+</button>
